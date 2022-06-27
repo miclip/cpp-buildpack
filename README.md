@@ -1,6 +1,7 @@
 # Simple C++ Custom Buildpack 
 
-An example paketo custom buildpack to compile c++ code. 
+An example paketo custom buildpack to compile c++ code. As the `g++` compiler is present on the base images no dependencies are required. https://github.com/paketo-buildpacks/base-stack-release/blob/1.2.1/build-receipt 
+
 
 ## Usage
 
