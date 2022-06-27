@@ -33,7 +33,7 @@ docker run test-cpp
 ~~~
 
 
-Use in Tanzu Build Service 
+## Use in Tanzu Build Service 
 
 ~~~sh 
 # package and publish buildpack image 
