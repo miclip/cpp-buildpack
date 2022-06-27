@@ -30,3 +30,25 @@ pack build test-cpp --path ./cpp-sample --buildpack ./cpp-buildpack --builder pa
 docker run test-cpp
 
 ~~~
+
+
+Use in Tanzu Build Service 
+
+~~~sh 
+# package and publish buildpack image 
+pack buildpack package gcr.io/some-project/custom-buildpacks/cpp-buildpack -f image -p ./cpp-buildpack  --publish
+
+# add to cluster store
+kp clusterstore add default -b gcr.io/some-project/custom-buildpacks/cpp-buildpack:1.0.0
+
+# create a builder 
+kp builder save cpp-test -b cpp-buildpack -n builds -s base --store default --tag gcr.io/some-project/custom-builders/cpp-builder
+
+# create image resource 
+kp image save cpp-sample -n builds --git https://github.com/miclip/cpp-sample.git --git-revision master -b cpp-test --tag gcr.io/some-project/tbs-examples/cpp-sample 
+
+# test image 
+docker run gcr.io/some-project/tbs-examples/cpp-sample
+Hello World
+
+~~~
