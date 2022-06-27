@@ -5,7 +5,7 @@ An example paketo custom buildpack to compile c++ code.
 ## Usage
 
 ~~~sh
-mdkir ./cpp-sample
+mkdir ./cpp-sample
 cat > "./cpp-sample/main.cpp" << EOL
     #include <iostream>
     int main()
