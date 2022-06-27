@@ -10,7 +10,7 @@ echo "[cpp]"
 cpp_layer=$layers_dir/cpp
 mkdir -p $cpp_layer
 
-echo "[compiling c++ code with g++ compiler"
+echo "[compiling c++ code with g++ compiler]"
 g++ -o $layers_dir/cpp/main -I . *.cpp 
 
 echo "launch = true" > ${cpp_layer}.toml
