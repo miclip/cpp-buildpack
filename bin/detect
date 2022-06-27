@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+
+if [ -n "$(find . -name '*.cpp' | head -1)" ]; then
+  echo "cpp" && exit 0
+else
+  echo "no" && exit 1
+fi

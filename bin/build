@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+layers_dir="$1"
+env_dir="$2/env"
+plan_path="$3"
+
+echo "[cpp]"
+cpp_layer=$layers_dir/cpp
+mkdir -p $cpp_layer
+
+echo "[compiling c++ code with g++ compiler"
+g++ -o $layers_dir/cpp/main -I . *.cpp 
+
+echo "launch = true" > ${cpp_layer}.toml
+echo "build = true" >> ${cpp_layer}.toml
+echo "cache = true" >> ${cpp_layer}.toml
+
+cat > "$layers_dir/launch.toml" << EOL
+    [[processes]]
+    type = "web"
+    command = "${layers_dir}/cpp/main"
+EOL
+
+exit 0
