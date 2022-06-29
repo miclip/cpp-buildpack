@@ -21,6 +21,9 @@ cat > "$layers_dir/launch.toml" << EOL
     [[processes]]
     type = "web"
     command = "${layers_dir}/cpp/main"
+    [[processes]]
+    type = "worker"
+    command = "${layers_dir}/cpp/main"
 EOL
 
 exit 0
